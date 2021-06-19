@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">AlabaReal</string>
+    <string name="facebook_application_id" >543511113339791</string>
+    <string name="facebook_login_protocol_scheme" >fb543511113339791</string>
+
+</resources>
