@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         // [START auth_fui_create_intent]
         // Choose authentication providers
         List<AuthUI.IdpConfig> providers = Arrays.asList(
+                new AuthUI.IdpConfig.EmailBuilder().build(),
                 new AuthUI.IdpConfig.PhoneBuilder().build(),
                 new AuthUI.IdpConfig.GoogleBuilder().build(),
                 new AuthUI.IdpConfig.FacebookBuilder().build());
@@ -63,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
         Intent signInIntent = AuthUI.getInstance()
                 .createSignInIntentBuilder()
                 .setAvailableProviders(providers)
+                .setLogo(R.drawable.ic_launcher_foreground)      // Set logo drawable
+//                .setTheme(R.style.MySuperAppTheme)      // Set theme
                 .build();
         signInLauncher.launch(signInIntent);
         // [END auth_fui_create_intent]

@@ -39,24 +39,17 @@ public class ProfileActivity extends AppCompatActivity {
             }
         }
         Button logout = findViewById(R.id.logout_btn);
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signOut();
-            }
-        });
+        logout.setOnClickListener(v -> signOut());
 
     }
     public void signOut() {
         // [START auth_fui_signout]
         AuthUI.getInstance()
                 .signOut(this)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    public void onComplete(@NonNull Task<Void> task) {
-                        FirebaseAuth.getInstance().signOut();
-                        startActivity(new Intent(ProfileActivity.this,MainActivity.class));
-                        finish();
-                    }
+                .addOnCompleteListener(task -> {
+                    FirebaseAuth.getInstance().signOut();
+                    startActivity(new Intent(ProfileActivity.this,MainActivity.class));
+                    finish();
                 });
         // [END auth_fui_signout]
     }
